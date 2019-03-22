@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import java.awt.Insets;
+import javax.swing.JLabel;
 
 public class Football {
 
@@ -53,7 +55,6 @@ public class Football {
 		JPanel contentPane = new JPanel();
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
-
 
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(SystemColor.activeCaption);
@@ -157,26 +158,29 @@ public class Football {
 		});
 		mnAddData.add(mntmMatches_1);
 
-	
 		JScrollPane scrollBar = new JScrollPane();
 		scrollBar.setBounds(0, 22, 434, 232);
-		
+
 		frame.getContentPane().add(scrollBar);
-		
-				JTextPane textPane_1 = new JTextPane();
-				scrollBar.setViewportView(textPane_1);
-				textPane_1.setEditable(false);
-		
+
+		JTextPane textPane_1 = new JTextPane();
+		scrollBar.setViewportView(textPane_1);
+		textPane_1.setEditable(false);
 
 		if (this.option == 1) {
-			File playersFile = new File("C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\Players.txt");
+
+			JLabel lblName = new JLabel("Players:");
+			lblName.setBounds(52, 68, 80, 14);
+			contentPane.add(lblName);
+			File playersFile = new File(
+					"C:\\Users\\ik013043z1\\eclipse-workspace\\FootballWindowBuilder\\src\\Players.txt");
 			boolean playersFileFound = false;
 			while (!playersFileFound) {
 				try {
 					Scanner playersScanner = new Scanner(playersFile);
-					String player="";
+					String player = "";
 					while (playersScanner.hasNext()) {
-						 player = player +"\n"+ playersScanner.nextLine();
+						player = player + "\n" + playersScanner.nextLine();
 
 					}
 					textPane_1.setText(player);
@@ -186,16 +190,17 @@ public class Football {
 					System.err.println("The file which contains the players was not found, enter the correct name");
 				}
 			}
-			
+
 		} else if (this.option == 2) {
-			File teamsFile = new File("C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\Teams.txt");
+			File teamsFile = new File(
+					"C:\\Users\\ik013043z1\\eclipse-workspace\\FootballWindowBuilder\\src\\Teams.txt");
 			boolean teamsFileFound = false;
 			while (!teamsFileFound) {
 				try {
 					Scanner teamsScanner = new Scanner(teamsFile);
-					String team="";
+					String team = "";
 					while (teamsScanner.hasNext()) {
-						 team = team +"\n"+ teamsScanner.nextLine();
+						team = team + "\n" + teamsScanner.nextLine();
 
 					}
 					textPane_1.setText(team);
@@ -205,16 +210,17 @@ public class Football {
 					System.err.println("The file which contains the teams was not found, enter the correct name");
 				}
 			}
-			
+
 		} else if (this.option == 3) {
-			File matchesFile = new File("C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\ChampionsMatches.txt");
+			File matchesFile = new File(
+					"C:\\Users\\ik013043z1\\eclipse-workspace\\FootballWindowBuilder\\src\\ChampionsMatches.txt");
 			boolean matchesFileFound = false;
 			while (!matchesFileFound) {
 				try {
 					Scanner matchesScanner = new Scanner(matchesFile);
-					String match="";
+					String match = "";
 					while (matchesScanner.hasNext()) {
-						 match = match +"\n"+ matchesScanner.nextLine();
+						match = match + "\n" + matchesScanner.nextLine();
 
 					}
 					textPane_1.setText(match);
@@ -337,16 +343,39 @@ public class Football {
 			}
 		});
 		mnAddData.add(mntmMatches_1);
-		
-		
+
+		JMenu mnModifyData = new JMenu("Modify data");
+		menuBar.add(mnModifyData);
+
+		JMenuItem mntmPlayers_2 = new JMenuItem("Players");
+		mntmPlayers_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ModifyPlayer player = new ModifyPlayer();
+					player.getFrame().setVisible(true);
+					frame.dispose();
+
+				} catch (Exception i) {
+					i.printStackTrace();
+				}
+			}
+		});
+		mnModifyData.add(mntmPlayers_2);
+
+		JMenuItem mntmTeams_2 = new JMenuItem("Teams");
+		mnModifyData.add(mntmTeams_2);
+
+		JMenuItem mntmMatches_2 = new JMenuItem("Matches");
+		mnModifyData.add(mntmMatches_2);
+
 		JScrollPane scrollBar = new JScrollPane();
 		scrollBar.setBounds(0, 22, 434, 239);
-		
+
 		frame.getContentPane().add(scrollBar);
-		
-				JTextPane textPane_1 = new JTextPane();
-				scrollBar.setViewportView(textPane_1);
-				textPane_1.setEditable(false);
+
+		JTextPane textPane_1 = new JTextPane();
+		scrollBar.setViewportView(textPane_1);
+		textPane_1.setEditable(false);
 
 	}
 

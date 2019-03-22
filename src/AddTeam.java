@@ -155,7 +155,7 @@ public class AddTeam {
 			}
 		});
 		mnAddData.add(mntmMatches_1);
-		
+
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(52, 68, 80, 14);
 		contentPane.add(lblName);

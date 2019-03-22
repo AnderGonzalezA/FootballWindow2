@@ -28,4 +28,3 @@ Sane::20::ManchesterCity
 Rashford::21::ManchesterUnited
 Salah::26::Liverpool
 DelleAlli::23::Tottenham
-aitor::29::FDCVDXS

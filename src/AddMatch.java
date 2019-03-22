@@ -51,7 +51,7 @@ public class AddMatch {
 		JPanel contentPane = new JPanel();
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(SystemColor.activeCaption);
 		menuBar.setBounds(0, 0, 434, 22);
@@ -136,7 +136,7 @@ public class AddMatch {
 				}
 			}
 		});
-		
+
 		mnAddData.add(mntmTeams_1);
 
 		JMenuItem mntmMatches_1 = new JMenuItem("Matches");
@@ -192,16 +192,18 @@ public class AddMatch {
 		JButton btnAddMatch = new JButton("Add match");
 		btnAddMatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				File matchesFile = new File("C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\ChampionsMatches.txt");
+				File matchesFile = new File(
+						"C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\ChampionsMatches.txt");
 				try {
-					BufferedWriter writer = new BufferedWriter(new FileWriter(matchesFile,true));
-					String match = "\n"+textField.getText()+"::"+textField_1.getText()+"::"+textField_2.getText()+"::"+textField_3.getText();
+					BufferedWriter writer = new BufferedWriter(new FileWriter(matchesFile, true));
+					String match = "\n" + textField.getText() + "::" + textField_1.getText() + "::"
+							+ textField_2.getText() + "::" + textField_3.getText();
 					writer.write(match);
 					writer.close();
 					Football show = new Football(3);
 					show.getFrame().setVisible(true);
 					frame.dispose();
-					
+
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -211,7 +213,6 @@ public class AddMatch {
 		btnAddMatch.setBounds(176, 159, 107, 23);
 		frame.getContentPane().add(btnAddMatch);
 
-		
 	}
 
 	public JFrame getFrame() {
@@ -227,7 +228,6 @@ public class AddMatch {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		
 	}
 
 }

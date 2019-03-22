@@ -86,16 +86,18 @@ public class AddPlayer {
 		JButton btnNewButton = new JButton("Add player");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				File playersFile = new File("C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\Players.txt");
+				File playersFile = new File(
+						"C:\\Users\\ik013043z1\\eclipse-workspace\\WindowBuilder\\src\\Players.txt");
 				try {
-					BufferedWriter writer = new BufferedWriter(new FileWriter(playersFile,true));
-					String player = "\n"+textField.getText()+"::"+textField_1.getText()+"::"+textField_2.getText();
+					BufferedWriter writer = new BufferedWriter(new FileWriter(playersFile, true));
+					String player = "\n" + textField.getText() + "::" + textField_1.getText() + "::"
+							+ textField_2.getText();
 					writer.write(player);
 					writer.close();
 					Football show = new Football(1);
 					show.getFrame().setVisible(true);
 					frame.dispose();
-					
+
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -188,14 +190,14 @@ public class AddPlayer {
 				}
 			}
 		});
-		
+
 		mnAddData.add(mntmTeams_1);
 
 		JMenuItem mntmMatches_1 = new JMenuItem("Matches");
 		mntmMatches_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					
+
 					AddMatch match = new AddMatch();
 					match.getFrame().setVisible(true);
 					frame.dispose();
