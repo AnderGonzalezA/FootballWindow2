@@ -81,11 +81,11 @@ public class ModifyFootballMatch {
 		textField.setBounds(93, 50, 97, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblVisitorTeam = new JLabel("Visitor team");
 		lblVisitorTeam.setBounds(213, 53, 86, 14);
 		contentPane.add(lblVisitorTeam);
-		
+
 		textField_4 = new JTextField();
 		textField_4.setBounds(310, 50, 102, 20);
 		contentPane.add(textField_4);
@@ -128,12 +128,12 @@ public class ModifyFootballMatch {
 		textField_3.setVisible(false);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
-		
+
 		JLabel lblNewVisitorGoals = new JLabel("New visitor goals");
 		lblNewVisitorGoals.setVisible(false);
 		lblNewVisitorGoals.setBounds(202, 150, 97, 14);
 		contentPane.add(lblNewVisitorGoals);
-		
+
 		textField_5 = new JTextField();
 		textField_5.setVisible(false);
 		textField_5.setBounds(310, 147, 102, 20);
@@ -164,12 +164,13 @@ public class ModifyFootballMatch {
 				while (!footballMatchesFileFound) {
 					try {
 						Scanner footballMatchesScanner = new Scanner(footballMatchesFile);
-						boolean footballMatchFound=false;
+						boolean footballMatchFound = false;
 						while (footballMatchesScanner.hasNext()) {
 							String footballMatch = footballMatchesScanner.nextLine();
 							String[] footballMatchInformation = footballMatch.split("::");
-							if (footballMatchInformation[0].equals(textField.getText())&&footballMatchInformation[1].equals(textField_4.getText())) {
-								footballMatchFound=true;
+							if (footballMatchInformation[0].equals(textField.getText())
+									&& footballMatchInformation[2].equals(textField_4.getText())) {
+								footballMatchFound = true;
 								lblNewLabel.setVisible(true);
 								lblNewLabel_1.setVisible(true);
 								lblNewLabel_2.setVisible(true);
@@ -198,7 +199,8 @@ public class ModifyFootballMatch {
 						footballMatchesFileFound = true;
 
 					} catch (FileNotFoundException i) {
-						System.err.println("The file which contains the footballMatches was not found, enter the correct name");
+						System.err.println(
+								"The file which contains the footballMatches was not found, enter the correct name");
 					}
 				}
 			}
@@ -215,23 +217,30 @@ public class ModifyFootballMatch {
 						while (footballMatchesScanner.hasNext()) {
 							String footballMatch = footballMatchesScanner.nextLine();
 							String[] footballMatchInformation = footballMatch.split("::");
-							Team thisLocalTeam = new Team(footballMatchInformation[0],"");
-							Team thisVisitorTeam = new Team(footballMatchInformation[1],"");
-							FootballMatch thisFootballMatch = new FootballMatch(thisLocalTeam,Integer.parseInt(footballMatchInformation[2]),thisVisitorTeam,Integer.parseInt(footballMatchInformation[3]));
+							Team thisLocalTeam = new Team(footballMatchInformation[0], "");
+							Team thisVisitorTeam = new Team(footballMatchInformation[2], "");
+							FootballMatch thisFootballMatch = new FootballMatch(thisLocalTeam,
+									Integer.parseInt(footballMatchInformation[1]), thisVisitorTeam,
+									Integer.parseInt(footballMatchInformation[3]));
 							footballMatches.add(thisFootballMatch);
 						}
 						for (int i = 0; i < footballMatches.size(); i++) {
-							if (footballMatches.get(i).getLocalTeam().getTeamName().equals(textField.getText())&&footballMatches.get(i).getVisitorTeam().getTeamName().equals(textField_4.getText())) {
+							if (footballMatches.get(i).getLocalTeam().getTeamName().equals(textField.getText())
+									&& footballMatches.get(i).getVisitorTeam().getTeamName()
+											.equals(textField_4.getText())) {
 								footballMatches.remove(i);
-								footballMatches.add(new FootballMatch(new Team(textField_1.getText(),""),Integer.parseInt(textField_2.getText()),new Team(textField_3.getText(),""),Integer.parseInt(textField_5.getText())));
+								footballMatches.add(new FootballMatch(new Team(textField_1.getText(), ""),
+										Integer.parseInt(textField_2.getText()), new Team(textField_3.getText(), ""),
+										Integer.parseInt(textField_5.getText())));
 								BufferedWriter writer = new BufferedWriter(new FileWriter(footballMatchesFile));
 								String footballMatchInformation = "";
 								for (int j = 0; j < footballMatches.size(); j++) {
 									String localTeamName = footballMatches.get(j).getLocalTeam().getTeamName();
 									String localGoals = String.valueOf(footballMatches.get(j).getGoalsLocal());
-									String visitorteamName =footballMatches.get(j).getVisitorTeam().getTeamName();
+									String visitorteamName = footballMatches.get(j).getVisitorTeam().getTeamName();
 									String visitorGoals = String.valueOf(footballMatches.get(j).getGoalsVisitor());
-									footballMatchInformation = localTeamName+"::"+localGoals+"::"+visitorteamName+"::"+visitorGoals;
+									footballMatchInformation = localTeamName + "::" + localGoals + "::"
+											+ visitorteamName + "::" + visitorGoals;
 									writer.write(footballMatchInformation);
 									writer.newLine();
 								}
@@ -242,7 +251,8 @@ public class ModifyFootballMatch {
 						footballMatchesScanner.close();
 						footballMatchesFileFound = true;
 					} catch (FileNotFoundException i) {
-						System.err.println("The file which contains the players was not found, enter the correct name.");
+						System.err
+								.println("The file which contains the players was not found, enter the correct name.");
 					} catch (IOException e) {
 						System.out.println("The 'FileWriter' object could not be created.");
 					}
@@ -257,9 +267,15 @@ public class ModifyFootballMatch {
 				lblNewLabel.setVisible(false);
 				lblNewLabel_1.setVisible(false);
 				lblNewLabel_2.setVisible(false);
+				lblNewVisitorGoals.setVisible(false);
+				textField_1.setText("");
 				textField_1.setVisible(false);
+				textField_2.setText("");
 				textField_2.setVisible(false);
+				textField_3.setText("");
 				textField_3.setVisible(false);
+				textField_5.setText("");
+				textField_5.setVisible(false);
 				btnNewButton_1.setVisible(false);
 			}
 		});
@@ -388,9 +404,33 @@ public class ModifyFootballMatch {
 		mnModifyData.add(mntmPlayers_2);
 
 		JMenuItem mntmTeams_2 = new JMenuItem("Teams");
+		mntmTeams_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ModifyTeam team = new ModifyTeam();
+					team.getFrame().setVisible(true);
+					frame.dispose();
+
+				} catch (Exception i) {
+					i.printStackTrace();
+				}
+			}
+		});
 		mnModifyData.add(mntmTeams_2);
 
 		JMenuItem mntmMatches_2 = new JMenuItem("Matches");
+		mntmMatches_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ModifyFootballMatch footballMatch = new ModifyFootballMatch();
+					footballMatch.getFrame().setVisible(true);
+					frame.dispose();
+
+				} catch (Exception i) {
+					i.printStackTrace();
+				}
+			}
+		});
 		mnModifyData.add(mntmMatches_2);
 	}
 }

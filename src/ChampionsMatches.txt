@@ -1,12 +1,12 @@
-Chelsea::Arsenal::2::1
-ManchesterCity::ManchesterUnited::3::4
-Liverpool::Tottenham::1::1
-Liverpool::ManchesterUnited::0::0
-Chelsea::ManchesterUnited::0::0
-RealMadrid::Barcelona::0::0
-RealMadrid::Barcelona::5::0
-Touring::Oiartzun::0::4
-Usurbil::Oiartzun::2::4
-RealSociedad::Sevilla::0::0
-Levante::Getafe::0::0
-Usurbil::Amaikak bat::3::0
+Chelsea::2::Arsenal::1
+ManchesterCity::3::ManchesterUnited::4
+Liverpool::1::Tottenham::1
+Liverpool::0::ManchesterUnited::0
+Chelsea::0::ManchesterUnited::0
+RealMadrid::0::Barcelona::0
+RealMadrid::5::Barcelona::0
+Usurbil::2::Oiartzun::4
+RealSociedad::0::Sevilla::0
+Levante::0::Getafe::0
+Usurbil::3::Amaikakbat::0
+Touring::1::Oiartzun::4

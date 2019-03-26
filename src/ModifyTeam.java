@@ -336,9 +336,33 @@ public class ModifyTeam {
 		mnModifyData.add(mntmPlayers_2);
 
 		JMenuItem mntmTeams_2 = new JMenuItem("Teams");
+		mntmTeams_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ModifyTeam team = new ModifyTeam();
+					team.getFrame().setVisible(true);
+					frame.dispose();
+
+				} catch (Exception i) {
+					i.printStackTrace();
+				}
+			}
+		});
 		mnModifyData.add(mntmTeams_2);
 
 		JMenuItem mntmMatches_2 = new JMenuItem("Matches");
+		mntmMatches_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ModifyFootballMatch footballMatch = new ModifyFootballMatch();
+					footballMatch.getFrame().setVisible(true);
+					frame.dispose();
+
+				} catch (Exception i) {
+					i.printStackTrace();
+				}
+			}
+		});
 		mnModifyData.add(mntmMatches_2);
 	}
 }
