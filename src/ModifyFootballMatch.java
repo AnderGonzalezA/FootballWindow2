@@ -27,7 +27,7 @@ public class ModifyFootballMatch {
 
 	private JFrame frame;
 	private JTextField textFieldNewLocalTeam;
-	private JTextField textField_2;
+	private JTextField textFieldNewLocalGoals;
 	private JTextField textFieldNewVisitorTeam;
 	private JTextField textFieldVisitorTeam;
 	private JTextField textFieldNewVisitorGoals;
@@ -112,11 +112,11 @@ public class ModifyFootballMatch {
 		lblNewLocalGoals.setVisible(false);
 		contentPane.add(lblNewLocalGoals);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(310, 92, 86, 20);
-		textField_2.setVisible(false);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldNewLocalGoals = new JTextField();
+		textFieldNewLocalGoals.setBounds(310, 92, 86, 20);
+		textFieldNewLocalGoals.setVisible(false);
+		contentPane.add(textFieldNewLocalGoals);
+		textFieldNewLocalGoals.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("New visitor team");
 		lblNewLabel_2.setVisible(false);
@@ -154,7 +154,7 @@ public class ModifyFootballMatch {
 				lblNewLabel_2.setVisible(false);
 				lblNewVisitorGoals.setVisible(false);
 				textFieldNewLocalTeam.setVisible(false);
-				textField_2.setVisible(false);
+				textFieldNewLocalGoals.setVisible(false);
 				textFieldNewVisitorTeam.setVisible(false);
 				textFieldNewVisitorGoals.setVisible(false);
 				btnModify.setVisible(false);
@@ -176,12 +176,12 @@ public class ModifyFootballMatch {
 								lblNewLabel_2.setVisible(true);
 								lblNewVisitorGoals.setVisible(true);
 								textFieldNewLocalTeam.setVisible(true);
-								textField_2.setVisible(true);
+								textFieldNewLocalGoals.setVisible(true);
 								textFieldNewVisitorTeam.setVisible(true);
 								textFieldNewVisitorGoals.setVisible(true);
 								btnModify.setVisible(true);
 								textFieldNewLocalTeam.setText(footballMatchInformation[0]);
-								textField_2.setText(footballMatchInformation[1]);
+								textFieldNewLocalGoals.setText(footballMatchInformation[1]);
 								textFieldNewVisitorTeam.setText(footballMatchInformation[2]);
 								textFieldNewVisitorGoals.setText(footballMatchInformation[3]);
 								lblLocalTeam.setVisible(false);
@@ -217,8 +217,8 @@ public class ModifyFootballMatch {
 						while (footballMatchesScanner.hasNext()) {
 							String footballMatch = footballMatchesScanner.nextLine();
 							String[] footballMatchInformation = footballMatch.split("::");
-							Team thisLocalTeam = new Team(footballMatchInformation[0], "");
-							Team thisVisitorTeam = new Team(footballMatchInformation[2], "");
+							Team thisLocalTeam = new Team(footballMatchInformation[0]);
+							Team thisVisitorTeam = new Team(footballMatchInformation[2]);
 							FootballMatch thisFootballMatch = new FootballMatch(thisLocalTeam,
 									Integer.parseInt(footballMatchInformation[1]), thisVisitorTeam,
 									Integer.parseInt(footballMatchInformation[3]));
@@ -229,8 +229,8 @@ public class ModifyFootballMatch {
 									&& footballMatches.get(i).getVisitorTeam().getTeamName()
 											.equals(textFieldVisitorTeam.getText())) {
 								footballMatches.remove(i);
-								footballMatches.add(new FootballMatch(new Team(textFieldNewLocalTeam.getText(), ""),
-										Integer.parseInt(textField_2.getText()), new Team(textFieldNewVisitorTeam.getText(), ""),
+								footballMatches.add(new FootballMatch(new Team(textFieldNewLocalTeam.getText()),
+										Integer.parseInt(textFieldNewLocalGoals.getText()), new Team(textFieldNewVisitorTeam.getText()),
 										Integer.parseInt(textFieldNewVisitorGoals.getText())));
 								BufferedWriter writer = new BufferedWriter(new FileWriter(footballMatchesFile));
 								String footballMatchInformation = "";
@@ -270,8 +270,8 @@ public class ModifyFootballMatch {
 				lblNewVisitorGoals.setVisible(false);
 				textFieldNewLocalTeam.setText("");
 				textFieldNewLocalTeam.setVisible(false);
-				textField_2.setText("");
-				textField_2.setVisible(false);
+				textFieldNewLocalGoals.setText("");
+				textFieldNewLocalGoals.setVisible(false);
 				textFieldNewVisitorTeam.setText("");
 				textFieldNewVisitorTeam.setVisible(false);
 				textFieldNewVisitorGoals.setText("");

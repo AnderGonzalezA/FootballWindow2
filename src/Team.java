@@ -1,11 +1,10 @@
 public class Team {
 
 	private String teamName;
-	private String coach;
+	private String coach="";
 	
-	public Team(String name,String coach) {
+	public Team(String name) {
 		setTeamName(name);
-		setCoach(coach);
 	}
 	
 	public String getTeamName() {

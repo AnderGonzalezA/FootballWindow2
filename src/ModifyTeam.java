@@ -172,13 +172,16 @@ public class ModifyTeam {
 						while (teamsScanner.hasNext()) {
 							String team = teamsScanner.nextLine();
 							String[] teamInformation = team.split("::");
-							Team thisTeam = new Team(teamInformation[0],teamInformation[1]);
+							Team thisTeam = new Team(teamInformation[0]);
+							thisTeam.setCoach(teamInformation[1]);
 							teams.add(thisTeam);
 						}
 						for (int i = 0; i < teams.size(); i++) {
 							if (teams.get(i).getTeamName().equals(textFieldName.getText())) {
 								teams.remove(i);
-								teams.add(new Team(textFieldNewName.getText(),textFieldNewCoach.getText()));
+								Team newTeam = new Team(textFieldNewName.getText());
+								newTeam.setCoach(textFieldNewCoach.getText());
+								teams.add(newTeam);
 								BufferedWriter writer = new BufferedWriter(new FileWriter(teamsFile));
 								String teamInformation = "";
 								for (int j = 0; j < teams.size(); j++) {
