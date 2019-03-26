@@ -26,8 +26,8 @@ import java.awt.event.ComponentEvent;
 public class ModifyTeam {
 
 	private JFrame frame;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldNewName;
+	private JTextField textFieldNewCoach;
 	private JTextField textField_3;
 
 	/**
@@ -75,52 +75,52 @@ public class ModifyTeam {
 		lblName.setBounds(109, 53, 46, 14);
 		contentPane.add(lblName);
 
-		JTextField textField = new JTextField();
-		textField.setBounds(165, 50, 134, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JTextField textFieldName = new JTextField();
+		textFieldName.setBounds(165, 50, 134, 20);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 
 		JLabel lblNotFound = new JLabel("Not found");
 		lblNotFound.setBounds(337, 53, 97, 14);
 		lblNotFound.setVisible(false);
 		contentPane.add(lblNotFound);
 
-		JLabel lblNewLabel = new JLabel("New name");
-		lblNewLabel.setBounds(10, 92, 86, 14);
-		lblNewLabel.setVisible(false);
-		contentPane.add(lblNewLabel);
+		JLabel lblNewName = new JLabel("New name");
+		lblNewName.setBounds(10, 92, 86, 14);
+		lblNewName.setVisible(false);
+		contentPane.add(lblNewName);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(93, 89, 86, 20);
-		textField_1.setVisible(false);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldNewName = new JTextField();
+		textFieldNewName.setBounds(93, 89, 86, 20);
+		textFieldNewName.setVisible(false);
+		contentPane.add(textFieldNewName);
+		textFieldNewName.setColumns(10);
 
-		JLabel lblNewLabel_1 = new JLabel("New coach");
-		lblNewLabel_1.setBounds(213, 92, 86, 14);
-		lblNewLabel_1.setVisible(false);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewCoach = new JLabel("New coach");
+		lblNewCoach.setBounds(213, 92, 86, 14);
+		lblNewCoach.setVisible(false);
+		contentPane.add(lblNewCoach);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(310, 92, 86, 20);
-		textField_2.setVisible(false);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldNewCoach = new JTextField();
+		textFieldNewCoach.setBounds(310, 92, 86, 20);
+		textFieldNewCoach.setVisible(false);
+		contentPane.add(textFieldNewCoach);
+		textFieldNewCoach.setColumns(10);
 
-		JButton btnNewButton_1 = new JButton("Modify");
-		btnNewButton_1.setVisible(false);
-		btnNewButton_1.setBounds(273, 146, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnModify = new JButton("Modify");
+		btnModify.setVisible(false);
+		btnModify.setBounds(273, 146, 89, 23);
+		contentPane.add(btnModify);
 
-		JButton btnNewButton = new JButton("Search");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblNotFound.setVisible(false);
-				lblNewLabel.setVisible(false);
-				lblNewLabel_1.setVisible(false);
-				textField_1.setVisible(false);
-				textField_2.setVisible(false);
-				btnNewButton_1.setVisible(false);
+				lblNewName.setVisible(false);
+				lblNewCoach.setVisible(false);
+				textFieldNewName.setVisible(false);
+				textFieldNewCoach.setVisible(false);
+				btnModify.setVisible(false);
 				File teamsFile = new File(
 						"C:\\Users\\ik013043z1\\eclipse-workspace\\FootballWindowBuilder\\src\\Teams.txt");
 				boolean teamsFileFound = false;
@@ -132,19 +132,19 @@ public class ModifyTeam {
 						while (teamsScanner.hasNext()) {
 							String team = teamsScanner.nextLine();
 							String[] teamInformation = team.split("::");
-							if (teamInformation[0].equals(textField.getText())) {
+							if (teamInformation[0].equals(textFieldName.getText())) {
 								modTeamName=teamInformation[0];
 								teamFound=true;
-								lblNewLabel.setVisible(true);
-								lblNewLabel_1.setVisible(true);
-								textField_1.setVisible(true);
-								textField_2.setVisible(true);
-								btnNewButton_1.setVisible(true);
-								textField_1.setText(modTeamName);
-								textField_2.setText(teamInformation[1]);
+								lblNewName.setVisible(true);
+								lblNewCoach.setVisible(true);
+								textFieldNewName.setVisible(true);
+								textFieldNewCoach.setVisible(true);
+								btnModify.setVisible(true);
+								textFieldNewName.setText(modTeamName);
+								textFieldNewCoach.setText(teamInformation[1]);
 								lblName.setVisible(false);
-								textField.setVisible(false);
-								btnNewButton.setVisible(false);
+								textFieldName.setVisible(false);
+								btnSearch.setVisible(false);
 								break;
 							}
 						}
@@ -160,7 +160,7 @@ public class ModifyTeam {
 				}
 			}
 		});
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArrayList<Team> teams = new ArrayList<Team>();
 				File teamsFile = new File(
@@ -176,9 +176,9 @@ public class ModifyTeam {
 							teams.add(thisTeam);
 						}
 						for (int i = 0; i < teams.size(); i++) {
-							if (teams.get(i).getTeamName().equals(textField.getText())) {
+							if (teams.get(i).getTeamName().equals(textFieldName.getText())) {
 								teams.remove(i);
-								teams.add(new Team(textField_1.getText(),textField_2.getText()));
+								teams.add(new Team(textFieldNewName.getText(),textFieldNewCoach.getText()));
 								BufferedWriter writer = new BufferedWriter(new FileWriter(teamsFile));
 								String teamInformation = "";
 								for (int j = 0; j < teams.size(); j++) {
@@ -201,18 +201,18 @@ public class ModifyTeam {
 					}
 				}
 				lblName.setVisible(true);
-				textField.setText("");
-				textField.setVisible(true);
-				btnNewButton.setVisible(true);
-				lblNewLabel.setVisible(false);
-				lblNewLabel_1.setVisible(false);
-				textField_1.setVisible(false);
-				textField_2.setVisible(false);
-				btnNewButton_1.setVisible(false);
+				textFieldName.setText("");
+				textFieldName.setVisible(true);
+				btnSearch.setVisible(true);
+				lblNewName.setVisible(false);
+				lblNewCoach.setVisible(false);
+				textFieldNewName.setVisible(false);
+				textFieldNewCoach.setVisible(false);
+				btnModify.setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(165, 88, 117, 23);
-		contentPane.add(btnNewButton);
+		btnSearch.setBounds(165, 88, 117, 23);
+		contentPane.add(btnSearch);
 
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(SystemColor.activeCaption);

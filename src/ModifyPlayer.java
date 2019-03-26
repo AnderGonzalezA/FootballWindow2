@@ -26,9 +26,9 @@ import java.awt.event.ComponentEvent;
 public class ModifyPlayer {
 
 	private JFrame frame;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textFieldNewName;
+	private JTextField textFieldNewAge;
+	private JTextField textFieldNewTeam;
 
 	/**
 	 * Launch the application.
@@ -71,69 +71,69 @@ public class ModifyPlayer {
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(109, 53, 46, 14);
-		contentPane.add(lblName);
+		JLabel lblname = new JLabel("Name");
+		lblname.setBounds(109, 53, 46, 14);
+		contentPane.add(lblname);
 
-		JTextField textField = new JTextField();
-		textField.setBounds(165, 50, 134, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JTextField textFieldName = new JTextField();
+		textFieldName.setBounds(165, 50, 134, 20);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 
 		JLabel lblNotFound = new JLabel("Not found");
 		lblNotFound.setBounds(337, 53, 97, 14);
 		lblNotFound.setVisible(false);
 		contentPane.add(lblNotFound);
 
-		JLabel lblNewLabel = new JLabel("New name");
-		lblNewLabel.setBounds(10, 92, 86, 14);
-		lblNewLabel.setVisible(false);
-		contentPane.add(lblNewLabel);
+		JLabel lblNewName = new JLabel("New name");
+		lblNewName.setBounds(10, 92, 86, 14);
+		lblNewName.setVisible(false);
+		contentPane.add(lblNewName);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(93, 89, 86, 20);
-		textField_1.setVisible(false);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldNewName = new JTextField();
+		textFieldNewName.setBounds(93, 89, 86, 20);
+		textFieldNewName.setVisible(false);
+		contentPane.add(textFieldNewName);
+		textFieldNewName.setColumns(10);
 
-		JLabel lblNewLabel_1 = new JLabel("New age");
-		lblNewLabel_1.setBounds(213, 92, 86, 14);
-		lblNewLabel_1.setVisible(false);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewAge = new JLabel("New age");
+		lblNewAge.setBounds(213, 92, 86, 14);
+		lblNewAge.setVisible(false);
+		contentPane.add(lblNewAge);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(310, 92, 86, 20);
-		textField_2.setVisible(false);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldNewAge = new JTextField();
+		textFieldNewAge.setBounds(310, 92, 86, 20);
+		textFieldNewAge.setVisible(false);
+		contentPane.add(textFieldNewAge);
+		textFieldNewAge.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("New team");
-		lblNewLabel_2.setBounds(10, 150, 86, 14);
-		lblNewLabel_2.setVisible(false);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblNewTeam = new JLabel("New team");
+		lblNewTeam.setBounds(10, 150, 86, 14);
+		lblNewTeam.setVisible(false);
+		contentPane.add(lblNewTeam);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(93, 147, 86, 20);
-		textField_3.setVisible(false);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textFieldNewTeam = new JTextField();
+		textFieldNewTeam.setBounds(93, 147, 86, 20);
+		textFieldNewTeam.setVisible(false);
+		contentPane.add(textFieldNewTeam);
+		textFieldNewTeam.setColumns(10);
 
-		JButton btnNewButton_1 = new JButton("Modify");
-		btnNewButton_1.setVisible(false);
-		btnNewButton_1.setBounds(273, 146, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnModify = new JButton("Modify");
+		btnModify.setVisible(false);
+		btnModify.setBounds(273, 146, 89, 23);
+		contentPane.add(btnModify);
 
-		JButton btnNewButton = new JButton("Search");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblNotFound.setVisible(false);
-				lblNewLabel.setVisible(false);
-				lblNewLabel_1.setVisible(false);
-				lblNewLabel_2.setVisible(false);
-				textField_1.setVisible(false);
-				textField_2.setVisible(false);
-				textField_3.setVisible(false);
-				btnNewButton_1.setVisible(false);
+				lblNewName.setVisible(false);
+				lblNewAge.setVisible(false);
+				lblNewTeam.setVisible(false);
+				textFieldNewName.setVisible(false);
+				textFieldNewAge.setVisible(false);
+				textFieldNewTeam.setVisible(false);
+				btnModify.setVisible(false);
 				File playersFile = new File(
 						"C:\\Users\\ik013043z1\\eclipse-workspace\\FootballWindowBuilder\\src\\Players.txt");
 				boolean playersFileFound = false;
@@ -145,22 +145,22 @@ public class ModifyPlayer {
 						while (playersScanner.hasNext()) {
 							String player = playersScanner.nextLine();
 							String[] playerInformation = player.split("::");
-							if (playerInformation[0].equals(textField.getText())) {
+							if (playerInformation[0].equals(textFieldName.getText())) {
 								modPlayerName=playerInformation[0];
 								playerFound=true;
-								lblNewLabel.setVisible(true);
-								lblNewLabel_1.setVisible(true);
-								lblNewLabel_2.setVisible(true);
-								textField_1.setVisible(true);
-								textField_2.setVisible(true);
-								textField_3.setVisible(true);
-								btnNewButton_1.setVisible(true);
-								textField_1.setText(modPlayerName);
-								textField_2.setText(playerInformation[1]);
-								textField_3.setText(playerInformation[2]);
-								lblName.setVisible(false);
-								textField.setVisible(false);
-								btnNewButton.setVisible(false);
+								lblNewName.setVisible(true);
+								lblNewAge.setVisible(true);
+								lblNewTeam.setVisible(true);
+								textFieldNewName.setVisible(true);
+								textFieldNewAge.setVisible(true);
+								textFieldNewTeam.setVisible(true);
+								btnModify.setVisible(true);
+								textFieldNewName.setText(modPlayerName);
+								textFieldNewAge.setText(playerInformation[1]);
+								textFieldNewTeam.setText(playerInformation[2]);
+								lblname.setVisible(false);
+								textFieldName.setVisible(false);
+								btnSearch.setVisible(false);
 								break;
 							}
 						}
@@ -176,7 +176,7 @@ public class ModifyPlayer {
 				}
 			}
 		});
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArrayList<FootballPlayer> footballPlayers = new ArrayList<FootballPlayer>();
 				File playersFile = new File(
@@ -192,9 +192,9 @@ public class ModifyPlayer {
 							footballPlayers.add(thisPlayer);
 						}
 						for (int i = 0; i < footballPlayers.size(); i++) {
-							if (footballPlayers.get(i).getPlayerName().equals(textField.getText())) {
+							if (footballPlayers.get(i).getPlayerName().equals(textFieldName.getText())) {
 								footballPlayers.remove(i);
-								footballPlayers.add(new FootballPlayer(textField_1.getText(),Integer.parseInt(textField_2.getText()),textField_3.getText()));
+								footballPlayers.add(new FootballPlayer(textFieldNewName.getText(),Integer.parseInt(textFieldNewAge.getText()),textFieldNewTeam.getText()));
 								BufferedWriter writer = new BufferedWriter(new FileWriter(playersFile));
 								String playerInformation = "";
 								for (int j = 0; j < footballPlayers.size(); j++) {
@@ -217,21 +217,21 @@ public class ModifyPlayer {
 						System.out.println("The 'FileWriter' object could not be created.");
 					}
 				}
-				lblName.setVisible(true);
-				textField.setText("");
-				textField.setVisible(true);
-				btnNewButton.setVisible(true);
-				lblNewLabel.setVisible(false);
-				lblNewLabel_1.setVisible(false);
-				lblNewLabel_2.setVisible(false);
-				textField_1.setVisible(false);
-				textField_2.setVisible(false);
-				textField_3.setVisible(false);
-				btnNewButton_1.setVisible(false);
+				lblname.setVisible(true);
+				textFieldName.setText("");
+				textFieldName.setVisible(true);
+				btnSearch.setVisible(true);
+				lblNewName.setVisible(false);
+				lblNewAge.setVisible(false);
+				lblNewTeam.setVisible(false);
+				textFieldNewName.setVisible(false);
+				textFieldNewAge.setVisible(false);
+				textFieldNewTeam.setVisible(false);
+				btnModify.setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(165, 88, 117, 23);
-		contentPane.add(btnNewButton);
+		btnSearch.setBounds(165, 88, 117, 23);
+		contentPane.add(btnSearch);
 
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(SystemColor.activeCaption);
