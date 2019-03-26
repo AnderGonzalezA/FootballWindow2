@@ -2,7 +2,12 @@ public class Team {
 
 	private String teamName;
 	private String coach;
-
+	
+	public Team(String name,String coach) {
+		setTeamName(name);
+		setCoach(coach);
+	}
+	
 	public String getTeamName() {
 		return this.teamName;
 	}

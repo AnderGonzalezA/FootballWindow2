@@ -1,6 +1,12 @@
 public class FootballPlayer extends Player {
 
 	private String teamName = "";
+	
+	public FootballPlayer(String name,int age,String teamName) {
+		setPlayerName(name);
+		setTeamName(teamName);
+		setAge(age);
+	}
 
 	public String getPlayerName() {
 		return this.playerName;
